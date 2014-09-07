@@ -1,0 +1,11 @@
+*~
+*.lnk
+*.ini
+*.d
+*.swp
+build/
+dist/
+debug/
+*.jpg
+*.obj
+*.xcf
