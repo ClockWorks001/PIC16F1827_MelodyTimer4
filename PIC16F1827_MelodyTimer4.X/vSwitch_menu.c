@@ -9,8 +9,10 @@
 #define SWITCH_MENU_LIB
 
 #include <xc.h>         // XC8 General Include File
+#include "mcc_generated_files/mcc.h"
+#include "vInteger.h"
 #include "vSwitch_menu.h"
-#include "vLED1.h"
+#include "vLED.h"
 #include "vClock01.h"
 #include "vBuzzer_pwm.h"
 
@@ -93,11 +95,11 @@ void vSW2_Check(void)
 
 
 /*****************************
-* eMenu_SW1_status clear
+* eMenu_SW2_Status clear
 *****************************/
 void vModeStatusClr(void)
 {
-	eMenu_SW1_status = eMenu_SW1_TimeSet;
+	eMenu_SW1_Status = eMenu_SW2_Start;
 }
 
 /*****************************
@@ -105,24 +107,24 @@ void vModeStatusClr(void)
 *****************************/
 void vModeControl01(void)
 {
-	switch (eMenu_SW1_status) {
-		case  	eMenu_SW1_Timer :
+	switch (eMenu_SW1_Status) {
+		case  	eMenu_SW1_Start :
 			vLEDClear();				//LED CLEAR
 			vClock01_Clear();			//CLOCK 初期化
 
-			eMenu_SW1_status++;				//次へ進む
+			eMenu_SW1_Status++;				//次へ進む
 			break;
 
 		case  	eMenu_SW1_Pre_CountDown :
 			vClock01_Clear();				//CLOCK 初期化
 			cMinCountDown = cCountDownTime;	//カウントダウンタイマ初期化
 			vStopBuzzer();					//ブザーストップ
-			eMenu_SW1_status++;					//次へ進む
+			eMenu_SW1_Status++;					//次へ進む
 			break;
 
 		case  	eMenu_SW1_CountDown :		//カウントダウン
 			if (cMinCountDown <= 0) {	//Time Up
-				eMenu_SW1_status++;
+				eMenu_SW1_Status++;
 			}
 			vLEDOutput(cMinCountDown);
 			break;
@@ -130,14 +132,14 @@ void vModeControl01(void)
 		case  	eMenu_SW1_Pre_Melody :
 			vClock01_Clear();			//CLOCK 初期化
 			usGakufuIchi = 0;			//楽譜位置初期化
-			eMenu_SW1_status++;
+			eMenu_SW1_Status++;
 			break;
 
 		case  	eMenu_SW1_Melody :			//音楽演奏
 			vMelody01();
 
 			if (ucMin01 > 10 && usGakufuIchi == 0) {			//音楽が10分以上経過し演奏が終わったら停止
-				eMenu_SW1_status = eMenu_SW1_Sleep;
+				eMenu_SW1_Status = eMenu_SW1_Sleep;
 			}
 
 			break;
@@ -146,12 +148,12 @@ void vModeControl01(void)
 			//Wait
 	//		vStopBuzzer();				//音楽停止
 	//		vLEDClear();				//LED CLEAR
-			eMenu_SW1_status = eMenu_SW1_Sleep;
+			eMenu_SW1_Status = eMenu_SW1_Sleep;
 			break;
 
 		case  	eMenu_SW1_Go_Timer_Start :
 	//		vStopBuzzer();					//音楽停止
-			eMenu_SW1_status = eMenu_SW1_Timer;	//先頭処理へ戻る
+			eMenu_SW1_Status = eMenu_SW1_Start;	//先頭処理へ戻る
 			break;
 
 		// ---------------------------------------------------
@@ -169,60 +171,60 @@ void vModeControl01(void)
 			IOC3	= 0;				// GPIO3の割込み許可
 
 		// wake up 時の戻り先
-	//		eMenu_SW1_status = eMenu_SW1_Timer;	//先頭処理へ戻る
-			eMenu_SW1_status = eMenu_SW1_TimeSet;	//TimerSet処理へ戻る
+	//		eMenu_SW1_Status = eMenu_SW1_Start;	//先頭処理へ戻る
+			eMenu_SW1_Status = eMenu_SW1_Wait;	//TimerSet処理へ戻る
 			break;
 
 		default:
-			eMenu_SW1_status = eMenu_SW1_Timer;
+			eMenu_SW1_Status = eMenu_SW1_Start;
 	}
 
 	// ---------------------------------------------------
-	switch (eMenu_SW2_status) {
-		case  	eMenu_SW2_TimeSet :
+	switch (eMenu_SW2_Status) {
+		case  	eMenu_SW2_Start :
 			vClock01_Clear();
 			vStopBuzzer();
 			switch (cCountDownTime) {
-			case  	3MIN :
-				eMenu_SW2_status = eMenu_SW2_TimeSet3min ;
+			case  	WAIT3MIN :
+				eMenu_SW2_Status = eMenu_SW2_Start3min ;
 			break;
-			case  	5MIN :
-				eMenu_SW2_status = eMenu_SW2_TimeSet5min ;
+			case  	WAIT5MIN :
+				eMenu_SW2_Status = eMenu_SW2_Start5min ;
 			break;
-			case  	10MIN :
-				eMenu_SW2_status = eMenu_SW2_TimeSet10min ;
+			case  	WAIT10MIN :
+				eMenu_SW2_Status = eMenu_SW2_Start10min ;
 			break;
 			default:
-				eMenu_SW2_status = eMenu_SW2_TimeSet3min ;
+				eMenu_SW2_Status = eMenu_SW2_Start3min ;
 			}
 			break;
-		case  	eMenu_SW2_TimeSet3min :
-			cCountDownTime = 3MIN;		//カウントダウン時間を3分に設定
+		case  	eMenu_SW2_Start3min :
+			cCountDownTime = WAIT3MIN;		//カウントダウン時間を3分に設定
 			vLEDClear();				//LED CLEAR
 			LED3min_ON();				//出力low
 			break;
 
-		case  	eMenu_SW2_TimeSet5min :
-			cCountDownTime = 5MIN;		//カウントダウン時間を5分に設定
+		case  	eMenu_SW2_Start5min :
+			cCountDownTime = WAIT5MIN;		//カウントダウン時間を5分に設定
 			vLEDClear();				//LED CLEAR
 			LED5min_ON();				//出力low
 			break;
 
-		case  	eMenu_SW2_TimeSet10min :
-			cCountDownTime = 10MIN;	//カウントダウン時間を10分に設定
+		case  	eMenu_SW2_Start10min :
+			cCountDownTime = WAIT10MIN;	//カウントダウン時間を10分に設定
 			vLEDClear();				//LED CLEAR
 			LED10min_ON();				//出力low
 			break;
 
-		case	eMenu_sw2_ReturnToSet3min:
-			eMenu_SW2_status = eMenu_SW2_TimeSet3min;
+		case	eMenu_SW2_ReturnToSet3min:
+			eMenu_SW2_Status = eMenu_SW2_Start3min;
 			break;
 
-		case	eMenu_sw2_Wait:
+		case	eMenu_SW2_Wait:
 			break;
 
 		default:
-			eMenu_SW2_status = eMenu_SW2_TimeSet;
+			eMenu_SW2_Status = eMenu_SW2_Start;
 	}
 
 }

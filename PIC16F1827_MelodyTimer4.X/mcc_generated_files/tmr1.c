@@ -50,7 +50,7 @@ SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
 
 #include <xc.h>
 #include "tmr1.h"
-#include "../vCLOCK01.h"
+#include "../vClock01.h"
 
 /**
   Section: Global Variables Definitions

@@ -21,9 +21,9 @@
 #define LED10min_ON()	IO_RB2_SetHigh()
 #define LED10min_OFF()	IO_RB2_SetLow()
 
-#define d3min		3	//wait time
-#define d5min		5	//wait time
-#define d10min		10	//wait time
+//#define d3min		3	//wait time
+//#define d5min		5	//wait time
+//#define d10min		10	//wait time
 
 //******************************************************************************
 //  Prototype define

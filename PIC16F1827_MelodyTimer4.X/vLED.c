@@ -26,9 +26,9 @@ void vLEDClear(void)
 void vLEDOutput(char cMinTime)
 {
 		if (sSecc < 6) {			//LED Blink
-			if (cMinTime <= d3min) {
+			if (cMinTime <= WAIT3MIN) {
 					LED3min_ON();
-			}else if (cMinTime <= d5min) {
+			}else if (cMinTime <= WAIT5MIN) {
 					LED5min_ON();
 			}else{
 					LED10min_ON();

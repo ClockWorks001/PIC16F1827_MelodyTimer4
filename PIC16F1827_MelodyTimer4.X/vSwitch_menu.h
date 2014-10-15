@@ -23,21 +23,21 @@
 #define SWITCH_OFF 		0
 
 
-#define 3MIN			3	//wait time
-#define 5MIN			5	//wait time
-#define 10MIN			10	//wait time
+#define WAIT3MIN		3	//wait time
+#define WAIT5MIN		5	//wait time
+#define WAIT10MIN		10	//wait time
 
 //******************************************************************************
 //  Propertis
 //******************************************************************************
 typedef struct {
-	WORD  OnTime = 0;
+	WORD  OnTime;
 //	BYTE  flag = 0;
 } SWITCHS;
 
 #if defined SWITCH_MENU_LIB
 	enum eMenu_SW1 {
-		eMenu_SW1_Timer,
+		eMenu_SW1_Start,
 			eMenu_SW1_Pre_CountDown,
 			eMenu_SW1_CountDown,
 			eMenu_SW1_Pre_Melody,
@@ -46,20 +46,20 @@ typedef struct {
 			eMenu_SW1_Go_Timer_Start,
 
 		eMenu_SW1_Sleep,
-		eMenu_SW1_end
+		eMenu_SW1_End
 		};
-	enum eMenu_SW1 eMenu_SW1_status;
+	enum eMenu_SW1 eMenu_SW1_Status;
 
 	enum eMenu_SW2 {
-		eMenu_SW2_TimeSet,
-			eMenu_sw2_TimeSet3min,
-			eMenu_sw2_TimeSet5min,
-			eMenu_sw2_TimeSet10min,
-			eMenu_sw2_ReturnToSet3min,
-			eMenu_sw2_wait,
-			eMenu_sw2_end
+		eMenu_SW2_Start,
+			eMenu_SW2_Start3min,
+			eMenu_SW2_Start5min,
+			eMenu_SW2_Start10min,
+			eMenu_SW2_ReturnToSet3min,
+			eMenu_SW2_Wait,
+			eMenu_SW2_End
 		};
-	enum eMenu_SW2 eMenu_SW2_status;
+	enum eMenu_SW2 eMenu_SW2_Status;
 
 #else
 	//extern char ucTestCount = 0;

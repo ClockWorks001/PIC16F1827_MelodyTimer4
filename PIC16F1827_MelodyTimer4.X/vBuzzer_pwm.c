@@ -10,7 +10,7 @@
 #include <xc.h>         // XC8 General Include File
 #include "mcc_generated_files/mcc.h"
 
-#include "vTimer1.h"
+//#include "vTimer1.h"
 #include "vBuzzer_pwm.h"
 #include "vSwitch_menu.h"
 
@@ -140,20 +140,20 @@ static char cWk1State = 0;
 *****************************/
 void vLEDBlink01(void)
 {
-	LED3min = 0;			//出力low
-	LED5min = 0;			//出力low
-	LED10min = 0;			//出力low
+	LED3min_OFF();			//出力low
+	LED5min_OFF();			//出力low
+	LED10min_OFF();			//出力low
 	switch (cWk1State) {
 	case  	1 :
-		LED3min = 1;			//出力low
+		LED3min_OFF();			//出力low
 		break;
 
 	case  	2 :
-		LED5min = 1;			//出力low
+		LED5min_OFF();			//出力low
 		break;
 
 	case  	3 :
-		LED10min = 1;			//出力low
+		LED10min_ON();			//出力low
 		break;
 
 	case  	4 :
