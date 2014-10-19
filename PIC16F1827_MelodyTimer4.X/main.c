@@ -10,6 +10,9 @@
 #include "mcc_generated_files/mcc.h"
 #include "user.h"          /* User funct/params, such as InitApp */
 #include "vClock01.h"
+#include "vLED.h"
+#include "vSwitch_menu.h"
+
 
 /******************************************************************************/
 /* User Global Variable Declaration                                           */
@@ -17,16 +20,10 @@
 
 /* i.e. uint8_t <variable_name>; */
 
-#define SWITCH1_ON  IO_RA4_GetValue() == 0
-#define SWITCH1_OFF IO_RA4_GetValue() == 1
-#define SWITCH2_ON  IO_RA5_GetValue() == 0
-#define SWITCH2_OFF IO_RA5_GetValue() == 1
-#define LED1_ON()	IO_RB0_SetHigh()
-#define LED1_OFF()	IO_RB0_SetLow()
-#define LED2_ON()	IO_RB1_SetHigh()
-#define LED2_OFF()	IO_RB1_SetLow()
-#define LED3_ON()	IO_RB2_SetHigh()
-#define LED3_OFF()	IO_RB2_SetLow()
+//#define SW1_ON  IO_RA4_GetValue() == 0
+//#define SW1_OFF IO_RA4_GetValue() == 1
+//#define SW2_ON  IO_RA5_GetValue() == 0
+//#define SW2_OFF IO_RA5_GetValue() == 1
 
 /******************************************************************************/
 /* Main Program                                                               */
@@ -54,13 +51,13 @@ void main(void)
         /* TODO <INSERT USER APPLICATION CODE HERE> */
 		vClock01();
 
-		if(SWITCH1_ON){
+		if(SW1_ON){
 			LED1_ON();
 		} else {
 			LED1_OFF();
 		}
 
-		if(SWITCH2_ON){
+		if(SW2_ON){
 			LED2_ON();
 		} else {
 			LED2_OFF();

@@ -1,6 +1,5 @@
 /*************************************************
 *  Switch_Menu処理ヘッダファイル
-*    vPushSwitch_init()  ----- 初期化
 *    vSwitch1Check() ----- switch5 チェック＆repeat処理
 *    vSwitch1UserHandling() ----- switch5が押された時のユーザ処理を記述する
 *    char cSwitch1ON() ----- switch5の状態を返信する。フラグをクリアする。
@@ -8,6 +7,7 @@
 *    vSwitch7UserHandling() ----- switch5が押された時のユーザ処理を記述する
 *************************************************/
 
+#include "vInteger.h"
 
 //******************************************************************************
 //  User define
@@ -19,13 +19,8 @@
 #define SW2_ON		IO_RA5_GetValue() == 0
 #define SW2_OFF		IO_RA5_GetValue() == 1
 
-#define SWITCH_ON 		1
-#define SWITCH_OFF 		0
-
-
-#define WAIT3MIN		3	//wait time
-#define WAIT5MIN		5	//wait time
-#define WAIT10MIN		10	//wait time
+//#define SWITCH_ON 		1
+//#define SWITCH_OFF 		0
 
 //******************************************************************************
 //  Propertis
@@ -52,12 +47,12 @@ typedef struct {
 
 	enum eMenu_SW2 {
 		eMenu_SW2_Start,
-			eMenu_SW2_Start3min,
-			eMenu_SW2_Start5min,
-			eMenu_SW2_Start10min,
+			eMenu_SW2_Set3min,
+			eMenu_SW2_Set5min,
+			eMenu_SW2_Set10min,
 			eMenu_SW2_ReturnToSet3min,
 			eMenu_SW2_Wait,
-			eMenu_SW2_End
+		eMenu_SW2_End
 		};
 	enum eMenu_SW2 eMenu_SW2_Status;
 
@@ -69,7 +64,6 @@ typedef struct {
 //******************************************************************************
 //  Prototype define
 //******************************************************************************
-void vPushSwitch_init(void);
 void vSwitch1Check(void);
 void vSwitch1UserHandling(void);
 char cSwitch1ON(void);
@@ -79,6 +73,6 @@ void vSwitch2UserHandling(void);
 char cSwitch2ON(void);
 
 void vModeControl01(void);
-void vModeStatusClr(void);
+//void vModeStatusClr(void);
 
 

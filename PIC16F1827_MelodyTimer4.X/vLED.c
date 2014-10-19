@@ -7,8 +7,10 @@
 #define vLED_LIB
 
 #include <xc.h>         // XC8 General Include File
-#include "vLED.h"
+#include "mcc_generated_files/mcc.h"
 #include "vClock01.h"
+#include "vLED.h"
+#include "vSwitch_menu.h"
 
 //******************************************************************************
 //  LED Clear

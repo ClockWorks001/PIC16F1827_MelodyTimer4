@@ -3,9 +3,13 @@
 *    vClock01() ----- 時間カウントアップ
 *************************************************/
 
+#define WAIT3MIN		3	//wait time
+#define WAIT5MIN		5	//wait time
+#define WAIT10MIN		10	//wait time
+
 /* 定数変数定義*/
 #if defined vClock01_LIB
-	short sSecc = 0;			// 時間計測用
+	short sSecc = 0;		// 時間計測用
 	char cFlag10mSec = 0;		// 10msed時間計測用
 	char cFlagSec = 0;		// 1sec時間計測用
 	unsigned char ucSec01, ucMin01, ucHour01;

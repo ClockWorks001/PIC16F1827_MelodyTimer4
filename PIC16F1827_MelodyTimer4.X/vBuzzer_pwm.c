@@ -9,9 +9,8 @@
 
 #include <xc.h>         // XC8 General Include File
 #include "mcc_generated_files/mcc.h"
-
-//#include "vTimer1.h"
 #include "vBuzzer_pwm.h"
+#include "vLED.h"
 #include "vSwitch_menu.h"
 
 
@@ -26,12 +25,12 @@ void vBuzzer_init(void)
 	TMR2IE 	= 0;			//0 = Disables the TMR2 to PR2 match interrupt
 
 	// CCP
-	CCP1CON	= 0x0C;			//PWM mode; PWM mode active-high
-	CCPR1L	= 0x8C / 2;		//rate 50%
-	CCPR1H	= 0x00;
-	CCP1IE	= 0;			//0 = Disables the CCP1 interrupt
+	CCP2CON	= 0x0C;			//PWM mode; PWM mode active-high
+	CCPR2L	= 0x8C / 2;		//rate 50%
+	CCPR2H	= 0x00;
+	CCP2IE	= 0;			//0 = Disables the CCP interrupt
 
-	TRISIO1	= 0;			//GP1 is output
+//	TRISIO1	= 0;			//GP1 is output
 
 }
 
@@ -40,9 +39,9 @@ void vBuzzer_init(void)
 *******************************/
 void vStopBuzzer(void)
 {
-	CCP1CON	= 0;			// CCP off
+	CCP2CON	= 0;			// CCP off
 	TMR2ON	= 0;			// TMR2 is off
-	GPIObits.GP2 = 0;			// out put low
+//	GPIObits.GP2 = 0;			// out put low
 }
 
 /*******************************
@@ -96,11 +95,11 @@ unsigned char ucBeep2(unsigned short usOnpu)
 //		test2 = ucTenkai[ucKaiten] ;
 //		test3 = (239 * test1 /test2) /100 - 1;
 		PR2 =   (239 * ucOnkai[ucOnkaiNum])/ucTenkai[ucKaiten]/100 - 1;
-		CCPR1L	= PR2 / 2;		//rate 50%
+		CCPR2L	= PR2 / 2;		//rate 50%
 
 		// CCP
-		CCP1CON	= 0x0C;			//PWM mode; PWM mode active-high
-		CCPR1H	= 0x00;
+		CCP2CON	= 0x0C;			//PWM mode; PWM mode active-high
+		CCPR2H	= 0x00;
 		// TMR2
 		//T2CON 	= 0x07;			//TMR2_ON & prescaler:1/4 postscaler:1/1
 		T2CON 	= 0x07 & ucPrescal[ucKaiten];		//TMR2_ON & prescaler
@@ -157,7 +156,7 @@ void vLEDBlink01(void)
 		break;
 
 	case  	4 :
-		LED5min = 1;			//出力low
+		LED5min_ON();			//出力low
 		cWk1State = 0;
 		break;
 
