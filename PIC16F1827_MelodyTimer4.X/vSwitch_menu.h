@@ -1,10 +1,5 @@
 /*************************************************
 *  Switch_Menu処理ヘッダファイル
-*    vSwitch1Check() ----- switch5 チェック＆repeat処理
-*    vSwitch1UserHandling() ----- switch5が押された時のユーザ処理を記述する
-*    char cSwitch1ON() ----- switch5の状態を返信する。フラグをクリアする。
-*    vSwitch7Check() ----- switch7 チェック＆repeat処理
-*    vSwitch7UserHandling() ----- switch5が押された時のユーザ処理を記述する
 *************************************************/
 
 #include "vInteger.h"
@@ -64,15 +59,11 @@ typedef struct {
 //******************************************************************************
 //  Prototype define
 //******************************************************************************
-void vSwitch1Check(void);
-void vSwitch1UserHandling(void);
-char cSwitch1ON(void);
+void vSW1_Check(void);
+void vSW2_Check(void);
 
-void vSwitch2Check(void);
-void vSwitch2UserHandling(void);
-char cSwitch2ON(void);
-
-void vModeControl01(void);
+void vMenuForSW1(void);          // time count down
+void vMenuForSW2(void);          // time setting
 //void vModeStatusClr(void);
 
 

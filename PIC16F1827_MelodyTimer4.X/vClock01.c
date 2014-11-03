@@ -23,12 +23,26 @@ void vClock01_Clear()
 void vClock01_interrupt()
 {
     // for Timer1 interrupted
-	cFlag10mSec = 1;
-	sSecc++;
-	if(sSecc >= 100 ){			// 10msec * 100 = 1sec
-			sSecc = 0;
-			cFlagSec++;
+    cFlag10mSec = 1;
+    sSecc++;
+    if(sSecc >= 100 ){			// 10msec * 100 = 1sec
+            sSecc = 0;
+            cFlagSec++;
     }
+}
+
+/*******************************
+*  check & clear 10msec count
+*******************************/
+char cFlag10mSec_ON()
+{
+    if(cFlag10mSec == 1){
+            cFlag10mSec = 0;
+            return 1;
+    } else {
+            return 0;
+    }
+
 }
 
 /*******************************

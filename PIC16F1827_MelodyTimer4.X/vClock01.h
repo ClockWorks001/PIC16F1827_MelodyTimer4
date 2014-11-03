@@ -16,7 +16,7 @@
 	char cMinCountDown;
 
 #else
-	extern short sSecc;
+	extern short sSecc;             //10msec counter : sSsecc * 100 = 1sec
 	extern char cFlag10mSec;
 	extern char cFlagSec;
 	extern unsigned char ucSec01, ucMin01, ucHour01;
@@ -30,4 +30,5 @@
 void vClock01_Clear();
 void vClock01_interrupt();
 void vClock01();
+char cFlag10mSec_ON();
 
