@@ -15,7 +15,8 @@ I use following peripherals for this Melody Timer project.
   *GPIO*(input x2 for Switches, output x3 for LED1, LED2, LED3)
 
 Other references.
-  <>
+  <https://docs.google.com/spreadsheets/d/1cmFSHjc119SGFIecEPz_QU-o_MFkjVccD5ZX7d7H6fI/edit?usp=sharing>
+
 
 
 ## Demo
