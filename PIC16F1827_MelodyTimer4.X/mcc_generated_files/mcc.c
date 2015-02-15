@@ -13,12 +13,12 @@
   @Description:
     This header file provides implementations for driver APIs for all modules selected in the GUI.
     Generation Information :
-        Product Revision  :  MPLAB® Code Configurator - v2.0.1
+        Product Revision  :  MPLAB® Code Configurator - v2.10
         Device            :  PIC16F1827
         Driver Version    :  1.02
     The generated drivers are tested against the following:
-        Compiler          :  XC8 v1.31
-        MPLAB             :  MPLAB X 2.10
+        Compiler          :  XC8 v1.33
+        MPLAB             :  MPLAB X 2.26
 */
 
 /*
@@ -76,11 +76,10 @@ void SYSTEM_Initialize(void)
     TMR1_Initialize();
 }
 
-
 void OSCILLATOR_Initialize(void)
 {
-    // SPLLEN disabled; SCS FOSC; IRCF 125KHz_HF; 
-    OSCCON = 0x40;
+    // SPLLEN disabled; SCS FOSC; IRCF 2MHz_HF; 
+    OSCCON = 0x60;
     // OSTS intosc; HFIOFR disabled; HFIOFS not0.5percent_acc; PLLR disabled; T1OSCR disabled; MFIOFR disabled; HFIOFL not2percent_acc; LFIOFR disabled; 
     OSCSTAT = 0x00;
     // TUN 0x0; 
@@ -88,6 +87,7 @@ void OSCILLATOR_Initialize(void)
     // Set the secondary oscillator
     
 }
+
 /**
  End of File
 */

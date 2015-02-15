@@ -13,12 +13,12 @@
   Description:
     This header file provides implementations for pin APIs for all pins selected in the GUI.
     Generation Information :
-        Product Revision  :  MPLAB® Code Configurator - v2.0.1
+        Product Revision  :  MPLAB® Code Configurator - v2.10
         Device            :  PIC16F1827
         Driver Version    :  1.02
     The generated drivers are tested against the following:
-        Compiler          :  XC8 v1.31
-        MPLAB             :  MPLAB X 2.10
+        Compiler          :  XC8 v1.33
+        MPLAB             :  MPLAB X 2.26
 */
 
 /*
@@ -55,7 +55,7 @@ void PIN_MANAGER_Initialize(void)
     WPUA = 0x00;
 
     LATB = 0x00;
-    TRISB = 0xC0;
+    TRISB = 0x01;
     ANSELB = 0x00;
     WPUB = 0x00;
 
@@ -67,12 +67,12 @@ void PIN_MANAGER_Initialize(void)
 }
 void PIN_MANAGER_IOC(void)
 {
-    if((IOCBP7== 1 || IOCBN7 == 1) && IOCBF7 == 1)
+    if((IOCBP0== 1 || IOCBN0 == 1) && IOCBF0 == 1)
     {
-        //@TODO Add handling code for IOC on pin RB7
-		IOCBF7 = 0;
+        //@TODO Add handling code for IOC on pin RB0
+        IOCBFbits.IOCBF0 = 0;
+        INTCONbits.IOCIF = 0;
     }
-	INTCONbits.IOCIF = 0;
 }
 /**
  End of File

@@ -13,12 +13,12 @@
   @Description
     This source file provides APIs for TMR1.
     Generation Information :
-        Product Revision  :  MPLAB® Code Configurator - v2.0.1
+        Product Revision  :  MPLAB® Code Configurator - v2.10
         Device            :  PIC16F1827
         Driver Version    :  2.00
     The generated drivers are tested against the following:
-        Compiler          :  XC8 v1.31
-        MPLAB             :  MPLAB X 2.10
+        Compiler          :  XC8 v1.33
+        MPLAB             :  MPLAB X 2.26
 */
 
 /*
@@ -71,20 +71,23 @@ void TMR1_Initialize(void)
     //T1GVAL disabled; T1GSPM disabled; T1GSS T1G; T1GTM disabled; T1GPOL low; TMR1GE disabled; T1GGO done; 
     T1GCON = 0x00;
 
-    //TMR1H 253; 
-    TMR1H = 0xFD;
+    //TMR1H 252; 
+    TMR1H = 0xFC;
 
-    //TMR1L 143; 
-    TMR1L = 0x8F;
+    //TMR1L 24; 
+    TMR1L = 0x18;
 
     // Load the TMR value to reload variable
-    timer1ReloadVal=TMR1;
+    timer1ReloadVal=(TMR1H << 8) | TMR1L;
 
     // Clearing IF flag before enabling the interrupt.
     PIR1bits.TMR1IF = 0;
 
     // Enabling TMR1 interrupt.
     PIE1bits.TMR1IE = 1;
+
+    // Start TMR1
+    TMR1_StartTimer();
 }
 
 void TMR1_StartTimer(void)
@@ -103,7 +106,7 @@ uint16_t TMR1_ReadTimer(void)
 {
     uint16_t readVal;
 
-    readVal = TMR1;
+    readVal = (TMR1H << 8) | TMR1L;
 
     return readVal;
 }
@@ -153,7 +156,8 @@ void TMR1_ISR(void)
     // Clear the TMR1 interrupt flag
     PIR1bits.TMR1IF = 0;
 
-    TMR1 += timer1ReloadVal;
+    TMR1H = (timer1ReloadVal >> 8);
+    TMR1L = timer1ReloadVal;
 
     // Add your TMR1 interrupt custom code
 	vClock01_interrupt();

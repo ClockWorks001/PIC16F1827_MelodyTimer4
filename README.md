@@ -1,6 +1,7 @@
 # PIC16F1827 Melody Timer Project.
 ---
 This is a simple cooking timer by PIC16F1827.
+It can choose which of 3 minutes, 5 minutes and 10 minutes.
 
 ## Description
 
@@ -24,7 +25,7 @@ Other references.
 ## Prerequisites
 
 I created this project using the free versions of the following tools:
- * [Microchip MPLAB X][2] (v2.15)
+ * [Microchip MPLAB X][2] (v2.3)
  * [Microchip XC8 Compiler][3] (v1.32)
  * [MPLAB Code Configurator][4] (installed as plugin within MPLAB X)
 
@@ -33,8 +34,6 @@ can open this project and build it.
 I use the [Microchip MPLAB PICkit3 In-Circuit Debugger][5] to program
 the chip and debug it.  
 
-Also, I use the [EAGLE PCB CAD][6] to draw the electric circuit schematic.
- * [EAGLE PCB CAD][6] (v7.1.0)
 
 ## Licence
 

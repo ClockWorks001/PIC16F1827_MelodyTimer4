@@ -12,6 +12,7 @@
 #include "vClock01.h"
 #include "vLED.h"
 #include "vSwitch_menu.h"
+#include "vBuzzer_pwm.h"
 
 
 /******************************************************************************/
@@ -41,6 +42,8 @@ void main(void)
 	// Start Peripherals
 	INTERRUPT_PeripheralInterruptEnable();
 	INTERRUPT_GlobalInterruptEnable();
+                        INTCONbits.IOCIF = 0;
+                        INTCONbits.IOCIE = 1;
 	TMR1_StartTimer();
 	TMR2_StartTimer();
     // User add cording
@@ -50,9 +53,14 @@ void main(void)
     {
         /* TODO <INSERT USER APPLICATION CODE HERE> */
 		vClock01();
-                if (cFlag10mSec_ON){
+                if (cFlag1mSec_ON()){
+                    vMenuForMelody();
+                }
+                if (cFlag10mSec_ON()){
                     vSW1_Check();
                     vSW2_Check();
+                    vLEDBlink01();
+                    vMenuForSW2();
                     vMenuForSW1();
                 }
 

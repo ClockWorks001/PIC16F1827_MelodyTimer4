@@ -13,12 +13,12 @@
   @Description
     This source file provides APIs for ECCP2.
     Generation Information :
-        Product Revision  :  MPLAB® Code Configurator - v2.0.1
+        Product Revision  :  MPLAB® Code Configurator - v2.10
         Device            :  PIC16F1827
         Driver Version    :  2.00
     The generated drivers are tested against the following:
-        Compiler          :  XC8 v1.31
-        MPLAB             :  MPLAB X 2.10
+        Compiler          :  XC8 v1.33
+        MPLAB             :  MPLAB X 2.26
 */
 
 /*
@@ -55,8 +55,7 @@ SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
   Section: Macro Declarations
 */
 
-#define PWM2_INITIALIZE_DUTY_VALUE    511
-#define PWM2_INITIALIZENEW_DUTY_VALUE    511
+#define PWM2_INITIALIZE_DUTY_VALUE    237
 
 /**
   Section: EPWM Module APIs
@@ -66,46 +65,20 @@ void EPWM2_Initialize (void)
 {
     // Set the PWM to the options selected in MPLAB® Code Configurator
     
-    // CCP2M P2AP2Chi_P2BP2Dhi; P2M halfbridge; DC2B 48; 
-    CCP2CON = 0xBC;
+    // CCP2M P2AP2Chi_P2BP2Dhi; P2M halfbridge; DC2B 16; 
+    CCP2CON = 0x9C;
     
     // PSS2BD P2BP2D_0; CCP2AS disabled; CCP2ASE operating; PSS2AC P2AP2C_0; 
     ECCP2AS = 0x00;
     
-    // P2RSEN automatic_restart; P2DC 0; 
-    PWM2CON = 0x80;
+    // P2RSEN manual_restart; P2DC 0; 
+    PWM2CON = 0x00;
     
     // STR2D P2D_to_port; STR2C P2C_to_port; STR2B P2B_to_port; STR2A P2A_to_port; STR2SYNC start_at_begin; 
     PSTR2CON = 0x00;
     
-    // CCPR2L 127; 
-    CCPR2L = 0x7F;
-    
-    // CCPR2H 0x0; 
-    CCPR2H = 0x00;
-    
-    
-    // Selecting Timer2
-    CCPTMRS0bits.C2TSEL = 0x0;
-}
-void EPWM2_InitializeNew (void)
-{
-    // Set the PWM to the options selected in MPLAB® Code Configurator
-    
-    // CCP2M P2AP2Chi_P2BP2Dhi; P2M single; DC2B 48; 
-    CCP2CON = 0x3C;
-    
-    // PSS2BD P2BP2D_0; CCP2AS disabled; CCP2ASE operating; PSS2AC P2AP2C_0; 
-    ECCP2AS = 0x00;
-    
-    // P2RSEN automatic_restart; P2DC 0; 
-    PWM2CON = 0x80;
-    
-    // STR2D P2D_to_port; STR2C P2C_to_port; STR2B P2B_to_port; STR2A P2A_to_CCP2M; STR2SYNC start_at_begin; 
-    PSTR2CON = 0x01;
-    
-    // CCPR2L 127; 
-    CCPR2L = 0x7F;
+    // CCPR2L 59; 
+    CCPR2L = 0x3B;
     
     // CCPR2H 0x0; 
     CCPR2H = 0x00;

@@ -9,10 +9,10 @@
 //******************************************************************************
 
 //pushbuttons define
-#define SW1_ON		IO_RA4_GetValue() == 0
-#define SW1_OFF		IO_RA4_GetValue() == 1
-#define SW2_ON		IO_RA5_GetValue() == 0
-#define SW2_OFF		IO_RA5_GetValue() == 1
+#define SW1_ON		IO_RB0_GetValue() == 0
+#define SW1_OFF		IO_RB0_GetValue() == 1
+#define SW2_ON		IO_RA4_GetValue() == 0
+#define SW2_OFF		IO_RA4_GetValue() == 1
 
 //#define SWITCH_ON 		1
 //#define SWITCH_OFF 		0
@@ -24,31 +24,30 @@ typedef struct {
 	WORD  OnTime;
 //	BYTE  flag = 0;
 } SWITCHS;
+enum eMenu_SW1 {
+        eMenu_SW1_Start,
+        eMenu_SW1_CountDown,
+        eMenu_SW1_MelodyStart,
+        eMenu_SW1_MelodyPlay,
+        eMenu_SW1_Wait,
+        eMenu_SW1_Wait2,
+        eMenu_SW1_ReturnToStart,
+        eMenu_SW1_Sleep,
+        eMenu_SW1_Sleep2,
+        eMenu_SW1_End
+        };
+enum eMenu_SW2 {
+        eMenu_SW2_Start,
+        eMenu_SW2_Set3min,
+        eMenu_SW2_Set5min,
+        eMenu_SW2_Set10min,
+        eMenu_SW2_ReturnToSet3min,
+        eMenu_SW2_Wait,
+        eMenu_SW2_End
+        };
 
 #if defined SWITCH_MENU_LIB
-	enum eMenu_SW1 {
-		eMenu_SW1_Start,
-			eMenu_SW1_Pre_CountDown,
-			eMenu_SW1_CountDown,
-			eMenu_SW1_Pre_Melody,
-			eMenu_SW1_Melody,
-			eMenu_SW1_Wait,
-			eMenu_SW1_Go_Timer_Start,
-
-		eMenu_SW1_Sleep,
-		eMenu_SW1_End
-		};
 	enum eMenu_SW1 eMenu_SW1_Status;
-
-	enum eMenu_SW2 {
-		eMenu_SW2_Start,
-			eMenu_SW2_Set3min,
-			eMenu_SW2_Set5min,
-			eMenu_SW2_Set10min,
-			eMenu_SW2_ReturnToSet3min,
-			eMenu_SW2_Wait,
-		eMenu_SW2_End
-		};
 	enum eMenu_SW2 eMenu_SW2_Status;
 
 #else

@@ -3,6 +3,7 @@
 *.ini
 *.d
 *.swp
+Gitignore/
 build/
 dist/
 debug/

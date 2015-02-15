@@ -13,12 +13,12 @@
   @Description
     This source file provides APIs for ECCP2.
     Generation Information :
-        Product Revision  :  MPLAB® Code Configurator - v2.0.1
+        Product Revision  :  MPLAB® Code Configurator - v2.10
         Device            :  PIC16F1827
         Driver Version    :  2.00
     The generated drivers are tested against the following:
-        Compiler          :  XC8 v1.31
-        MPLAB             :  MPLAB X 2.10
+        Compiler          :  XC8 v1.33
+        MPLAB             :  MPLAB X 2.26
 */
 
 /*
@@ -94,36 +94,6 @@ SUBSTITUTE GOODS, TECHNOLOGY, SERVICES, OR ANY CLAIMS BY THIRD PARTIES
     </code>
  */
 void EPWM2_Initialize(void);
-  /**
-  @Summary
-    Initializes the EPWM2
-
-  @Description
-    This routine initializes the EPWM2_InitializeNew.
-    This routine must be called before any other ECCP2 routine is called.
-    This routine should only be called once during system initialization.
-
-  @Preconditions
-    None
-
-  @Param
-    None
-
-  @Returns
-    None
-
-  @Comment
-    
-
- @Example
-    <code>
-    uint16_t dutycycle;
-
-    EPWM2_InitializeNew();
-    EPWM2_LoadDutyValue(dutycycle);
-    </code>
- */
-void EPWM2_InitializeNew(void);
 
 /**
   @Summary
