@@ -1,0 +1,122 @@
+Cmp-Mod V01 Created by PcbNew date = 2015/03/08 22:39:23
+
+BeginCmp
+TimeStamp = /54F5C03D;
+Reference = BT1;
+ValeurCmp = BATTERY;
+IdModule  = CR2032H_AK;
+EndCmp
+
+BeginCmp
+TimeStamp = /54E93762;
+Reference = C1;
+ValeurCmp = 10uF;
+IdModule  = C1_MU;
+EndCmp
+
+BeginCmp
+TimeStamp = /54E93FFC;
+Reference = C2;
+ValeurCmp = 0.1uF;
+IdModule  = C1_MU;
+EndCmp
+
+BeginCmp
+TimeStamp = /54E9481E;
+Reference = CN1;
+ValeurCmp = CN-POWER;
+IdModule  = PINHEAD1-2_MU;
+EndCmp
+
+BeginCmp
+TimeStamp = /54E94800;
+Reference = CN2;
+ValeurCmp = CN-ICSP;
+IdModule  = PINHEAD1-6_MU;
+EndCmp
+
+BeginCmp
+TimeStamp = /54E93581;
+Reference = D1;
+ValeurCmp = LED;
+IdModule  = LED-5MM_AK;
+EndCmp
+
+BeginCmp
+TimeStamp = /54E935C4;
+Reference = D2;
+ValeurCmp = LED;
+IdModule  = LED-5MM_AK;
+EndCmp
+
+BeginCmp
+TimeStamp = /54E935CC;
+Reference = D3;
+ValeurCmp = LED;
+IdModule  = LED-5MM_AK;
+EndCmp
+
+BeginCmp
+TimeStamp = /54E936B1;
+Reference = R1;
+ValeurCmp = 330;
+IdModule  = R4_MU;
+EndCmp
+
+BeginCmp
+TimeStamp = /54E936CD;
+Reference = R2;
+ValeurCmp = 330;
+IdModule  = R4_MU;
+EndCmp
+
+BeginCmp
+TimeStamp = /54E936EC;
+Reference = R3;
+ValeurCmp = 330;
+IdModule  = R4_MU;
+EndCmp
+
+BeginCmp
+TimeStamp = /54E93F69;
+Reference = R4;
+ValeurCmp = 10K;
+IdModule  = R4_MU;
+EndCmp
+
+BeginCmp
+TimeStamp = /54E93E26;
+Reference = R5;
+ValeurCmp = 10K;
+IdModule  = R4_MU;
+EndCmp
+
+BeginCmp
+TimeStamp = /54E95E92;
+Reference = SP1;
+ValeurCmp = SPEAKER;
+IdModule  = PINHEAD1-2_MU;
+EndCmp
+
+BeginCmp
+TimeStamp = /54E93502;
+Reference = SW1;
+ValeurCmp = SW_PUSH;
+IdModule  = SW_PUSH-12mm_AK;
+EndCmp
+
+BeginCmp
+TimeStamp = /54E9355A;
+Reference = SW2;
+ValeurCmp = SW_PUSH;
+IdModule  = SW_PUSH-12mm_AK;
+EndCmp
+
+BeginCmp
+TimeStamp = /54E933CD;
+Reference = U1;
+ValeurCmp = PIC16F1827;
+IdModule  = DIP-18__300_MU;
+EndCmp
+
+EndListe
