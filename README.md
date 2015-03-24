@@ -22,9 +22,7 @@ Other references.
 
 ## Demo
 
-![Alt text](/DEMO/circuit_schematic.JPG)
-![Alt text](/DEMO/circuit_board.JPG)
-![Alt text](/DEMO/circuit_image.JPG)
+![Alt text](/DEMO/circuit_DEMO.gif)
 
 ## Prerequisites
 
@@ -32,6 +30,7 @@ I created this project using the free versions of the following tools:
  * [Microchip MPLAB X][2] (v2.3)
  * [Microchip XC8 Compiler][3] (v1.32)
  * [MPLAB Code Configurator][4] (installed as plugin within MPLAB X)
+ * [KICAD][6] (BZR4022)
 
 You will need to download and install these tools appropriately before you
 can open this project and build it.
