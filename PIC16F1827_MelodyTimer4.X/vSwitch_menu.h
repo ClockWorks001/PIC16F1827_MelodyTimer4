@@ -1,6 +1,8 @@
 /*************************************************
 *  Switch_Menu処理ヘッダファイル
 *************************************************/
+#if !defined SWITCH_MENU_H
+#define SWITCH_MENU_H
 
 #include "vInteger.h"
 
@@ -65,4 +67,5 @@ void vMenuForSW1(void);          // time count down
 void vMenuForSW2(void);          // time setting
 //void vModeStatusClr(void);
 
+#endif //SWITCH_MENU_H
 

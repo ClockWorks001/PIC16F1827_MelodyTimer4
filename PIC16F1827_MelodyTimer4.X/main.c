@@ -52,35 +52,17 @@ void main(void)
     while(1)
     {
         /* TODO <INSERT USER APPLICATION CODE HERE> */
-		vClock01();
-                if (cFlag1mSec_ON()){
-                    vMenuForMelody();
-                }
-                if (cFlag10mSec_ON()){
-                    vSW1_Check();
-                    vSW2_Check();
-                    vLEDBlink01();
-                    vMenuForSW2();
-                    vMenuForSW1();
-                }
-
-//		if(SW1_ON){
-//			LED1_ON();
-//		} else {
-//			LED1_OFF();
-//		}
-//
-//		if(SW2_ON){
-//			LED2_ON();
-//		} else {
-//			LED2_OFF();
-//		}
-//
-//		if((ucSec01 % 2) == 0){
-//			LED3_ON();
-//		} else {
-//			LED3_OFF();
-//		}
+        vClock01();
+        if (cFlag1mSec_ON()){
+            vMenuForMelody();
+        }
+        if (cFlag10mSec_ON()){
+            vSW1_Check();
+            vSW2_Check();
+            vLEDBlink01();
+            vMenuForSW2();
+            vMenuForSW1();
+        }
 		
     }
 

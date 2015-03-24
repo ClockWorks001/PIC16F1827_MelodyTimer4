@@ -5,7 +5,8 @@
 *    vBuzzerReStart() ----- PWM shatdown clear
 *    vBeep() ----- Beep the buzzer
 *************************************************/
-
+#if !defined BUZZER_PWM_H
+#define BUZZER_PWM_H
 /*****************************
 ** 定数変数定義
 *****************************/
@@ -13,16 +14,20 @@
 // 音階 scale
 // 音の長さ length
 
+/*
 typedef struct {
 unsigned char 	ucLength, ucScale;	// 1Byte Scale(音階), 1Byte Length(長さ)
 } AMELODY_FACTER;
-
+*/
 typedef union {
-unsigned short 	usAMelody;		// 2Byte data
-AMELODY_FACTER 	F;                      // 1Byte Scale(音階), 1Byte Length(長さ)
+    unsigned short 	usAMelody;		// 2Byte data
+    struct AMELODY_FACTER{
+        unsigned char 	ucLength, ucScale;	// 1Byte Scale(音階), 1Byte Length(長さ)
+    } F ;
 } AMELODY;
 
 typedef struct {
+        unsigned short* uspMusic;
 	unsigned char ucMusicPosition;		//music position
 	unsigned short usLength;		// 2Byte Length(長さ)
 	AMELODY uAM;
@@ -38,7 +43,7 @@ enum eMenu_Melody {
     eMenu_Melody_End
     } EMENU_MELODY;
 
-#if defined PWM_BUZZER_LIB
+#if defined BUZZER_PWM_LIB
     enum eMenu_Melody eMenu_Melody_Status;
 //    EMENU_MELODY eMenu_Melody_Status;
     AMELODY_DATA sAMD;
@@ -111,4 +116,4 @@ enum eMenu_Melody {
 void vMenuForMelody(void);
 unsigned char ucMusicPosition(void);
 
-
+#endif //BUZZER_PWM_H

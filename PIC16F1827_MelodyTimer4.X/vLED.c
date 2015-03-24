@@ -4,7 +4,7 @@
 *    vLcd_data(data) ----- １文字表示出力
 *    cDataTrans(data) ----- I2Cデータ出力共通関数
 *************************************************/
-#define vLED_LIB
+#define LED_LIB
 
 #include <xc.h>         // XC8 General Include File
 #include "mcc_generated_files/mcc.h"
@@ -50,7 +50,7 @@ void vLED_Melody(AMELODY_DATA* pAMD)
 //******************************************************************************
 void vLED_CountDown(char cMinCountDownTime)
 {
-        if (sSecc < 60) {			//LED Blink
+        if (sGet1mSecc() < 50) {			//LED Blink
                 if (cMinCountDownTime <= WAIT3MIN) {
                     LED3min_ON();
                 }else if (cMinCountDownTime <= WAIT5MIN) {
@@ -89,7 +89,7 @@ void vLEDBlink01(void)
 		break;
 
 	case  	eMenu_LED_CountDown :
-                vLED_CountDown(cMinCountDown);
+                vLED_CountDown(cGetMinCountDownTime());
 		break;
 
 	case  	eMenu_LED_ALL_OFF :

@@ -1,15 +1,16 @@
 # PIC16F1827 Melody Timer Project.
 ---
-This is a simple cooking timer by PIC16F1827.
+This is a simple kitchen/cooking timer by [PIC16F1827][1].
 It can choose which of 3 minutes, 5 minutes and 10 minutes.
 
 ## Description
 
-The [PIC16F1827][1] is a very low-cost 8-bit microcontroller with a good
-amount of RAM, many peripherals. CPU Speed 8 MIPS / 32Mhz. RAM 384 Bytes. ROM 7 KBytes.
+This is a simple kitchen/cooking timer by [PIC16F1827][1].
+It can choose which of 3 minutes, 5 minutes and 10 minutes.
+When it became end of time, it sounds a melody.
 
 I use following peripherals for this Melody Timer project.
-  *TMR1* (with interrupt. LED3 is blinked at 1 second interval.)
+  *TMR1* (with interrupt. It makes 1mil second interval.)
   *TMR2*
   *ECCP2*(with TMR2. I use it for PWM output. It buzz a piezo sounder.)
   *GPIO*(input x2 for Switches, output x3 for LED1, LED2, LED3)
@@ -21,7 +22,9 @@ Other references.
 
 ## Demo
 
-![Alt text]()
+![Alt text](/DEMO/circuit_schematic.JPG)
+![Alt text](/DEMO/circuit_board.JPG)
+![Alt text](/DEMO/circuit_image.JPG)
 
 ## Prerequisites
 
@@ -51,7 +54,7 @@ Hiroshi Murakami
 [3]: http://www.microchip.com/pagehandler/en_us/devtools/mplabxc/ "MPLAB XC Compilers"
 [4]: http://www.microchip.com/pagehandler/en-us/press-release/microchips-free-code-configura.html "MPLAB Code Configurator"
 [5]: http://www.microchip.com/Developmenttools/ProductDetails.aspx?PartNO=PG164130 "MPLAB PICkit3 In-Circuit Debugger"
-[6]: http://www.cadsoftusa.com/ "EAGLE PCB CAD"
+[6]: http://www.kicad-pcb.org/display/KICAD/KiCad+EDA+Software+Suite "KICAD"
 
 
 

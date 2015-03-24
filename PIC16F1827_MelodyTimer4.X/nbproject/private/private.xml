@@ -2,8 +2,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/1">
         <file>
             <url>vBuzzer_pwm.h</url>
-            <line>11</line>
-            <line>101</line>
+            <line>12</line>
+            <line>106</line>
         </file>
     </editor-bookmarks>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/1">
+        <file>file:/home/hiroshi/Dropbox/20140903_PIC16F1827_MelodyTimer4/PIC16F1827_MelodyTimer4.X/vSwitch_menu.h</file>
+        <file>file:/home/hiroshi/Dropbox/20140903_PIC16F1827_MelodyTimer4/PIC16F1827_MelodyTimer4.X/vSwitch_menu.c</file>
+    </open-files>
 </project-private>

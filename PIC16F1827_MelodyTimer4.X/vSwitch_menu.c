@@ -96,16 +96,15 @@ void vMenuForSW1(void)
                         eMenu_SW2_Status = eMenu_SW2_Wait;
                         vMelodyStop();
                         vClock01_Clear();
-                        cMinCountDown = cCountDownTime; //clear the CountDown variable. カウントダウンタイマ初期化
+                        vSetMinCountDownTime(cCountDownTime); //clear the CountDown variable. カウントダウンタイマ初期化
                         eMenu_SW1_Status++;
                         break;
 
                 case    eMenu_SW1_CountDown :
-                        if (cMinCountDown <= 0) {       //IF Time is up
+//                        if (cGetMinCountDownTime() <= 0) {   //IF Time is up
+                        if (cIsMinCountDownTimeZero()) {       //IF Time is up
                             eMenu_SW1_Status++;
                         }
-                        //count down check logic hear??
-                        //vLED_CountDown(cMinCountDown);
                         eMenu_LED_Status = eMenu_LED_CountDown;
 
                         break;
@@ -117,7 +116,7 @@ void vMenuForSW1(void)
                         eMenu_SW1_Status++;
                         break;
                 case    eMenu_SW1_MelodyPlay :              //playing a melody
-                        if (ucMin01 >= 5 && ucMusicPosition() == 0) {        //音楽が5分以上経過し演奏が終わったら停止
+                        if (ucGetMin01() >= 5 && ucMusicPosition() == 0) {        //音楽が5分以上経過し演奏が終わったら停止
                                 eMenu_SW1_Status = eMenu_SW1_Sleep;
                         }
                         break;
@@ -130,7 +129,7 @@ void vMenuForSW1(void)
                         break;
                 case    eMenu_SW1_Wait2 :
                         // sleep判定を入れる
-                        if (ucMin01 >= 1 ) {        //1分以上経過したら停止
+                        if (ucGetMin01() >= 1 ) {        //1分以上経過したら停止
                                 eMenu_SW1_Status = eMenu_SW1_Sleep;
                         }
                         break;

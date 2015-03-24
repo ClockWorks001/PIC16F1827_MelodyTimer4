@@ -7,6 +7,12 @@ Gitignore/
 build/
 dist/
 debug/
-*.jpg
+work/
+temp/
 *.obj
 *.xcf
+*.*bak
+*.kicad_mod
+_autosave*.kicad*
+*.zip
+¡ƒƒ‚.TXT

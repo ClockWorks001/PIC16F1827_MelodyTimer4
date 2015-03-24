@@ -1,7 +1,7 @@
 /*************************************************
 *  Making music module by PWM
 *************************************************/
-#define PWM_BUZZER_LIB
+#define BUZZER_PWM_LIB
 
 #include <xc.h>         // XC8 General Include File
 #include "mcc_generated_files/mcc.h"
@@ -49,10 +49,15 @@ void vBuzzerSetPWM(AMELODY_DATA* pAMD)
 }
 
 /*******************************
+*  cSetAMusicData01
+*******************************/
+char cSelectAMusicData01(AMELODY_DATA* pAMD)
+{
+    pAMD->uspMusic =  (unsigned short *) usMusicData;
+	return 0;
+}
+/*******************************
 *  cBuzzerClearAMelodyData
-*   return: 0:End of Music
-*   input : AMUUSICDATA
-*   output: return, AMELODY_DATA
 *******************************/
 char cBuzzerClearAMelodyData(AMELODY_DATA* pAMD)
 {
@@ -65,12 +70,13 @@ char cBuzzerClearAMelodyData(AMELODY_DATA* pAMD)
 /*******************************
 *  cBuzzerGetAMelodyData
 *   return: 1:Playing 0:End of Music
-*   input : AMUUSICDATA
+*   input : AMELODY_DATA
 *   output: return, AMELODY_DATA
 *******************************/
 char cBuzzerGetAMelodyData(AMELODY_DATA* pAMD)
 {
-    pAMD->uAM.usAMelody = usMusicData[pAMD->ucMusicPosition];
+//    pAMD->uAM.usAMelody = usMusicData[pAMD->ucMusicPosition];
+    pAMD->uAM.usAMelody = *(pAMD->uspMusic + pAMD->ucMusicPosition );
     pAMD->usLength = pAMD->uAM.F.ucLength * BASIC_LENGTH;
     pAMD->ucMusicPosition ++;
 	if(pAMD->uAM.usAMelody == 0xFFFF){
@@ -110,7 +116,8 @@ void vMenuForMelody(void)
     switch (eMenu_Melody_Status) {
 
         case    eMenu_Melody_Start :
-                cBuzzerClearAMelodyData(&sAMD);               //set start point of a Melody data.
+                cSelectAMusicData01(&sAMD);               //select a music.
+                cBuzzerClearAMelodyData(&sAMD);        //set start point of a Melody data.
                 eMenu_Melody_Status++;
                 break;
 
